@@ -1,9 +1,8 @@
 import React from "react";
-import List from "./List";
+import List from "./list";
 
 
-class ListHeroes extends React.Component {
-    render () {
+function Content () {
 		return (
 		<React.Fragment>
 			<List
@@ -45,7 +44,6 @@ class ListHeroes extends React.Component {
 		</React.Fragment>
 	);
 	}
-}
 
 
 export default Content;
