@@ -7,6 +7,7 @@ function WordList() {
   return (
     <div className="WordList">
       <h2>Список всех слов</h2>
+      <WordCard />
       {/* Маппинг массива слов для вывода */}
     </div>
   );
