@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './component/Header';
-import List from './component/list';
-import Content from './component/content';
+import List from './component/List';
+import Content from './component/Content';
 function App() {
   return (
     <div className="App">
