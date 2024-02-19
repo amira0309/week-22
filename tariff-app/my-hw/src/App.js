@@ -14,7 +14,7 @@ class App extends React.Component {
     return (
       <div className="App">
         {tariffs.map((tariff, index) => (
-          <Tariff.modules
+          <Tariff
             key={index}
             name={tariff.name}
             price={tariff.price}

@@ -14,4 +14,3 @@ class Tariff extends React.Component {
 }
 
 export default Tariff;
-ss

@@ -1,0 +1,27 @@
+.tariff {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .tariff.highlighted {
+    background-color: yellow;
+  }
+  
+  .basic {
+    border-color: blue;
+  }
+  
+  .standard {
+    border-color: green;
+  }
+  
+  .premium {
+    border-color: orange;
+  }
+  
+  .pro {
+    border-color: red;
+  }
+  
