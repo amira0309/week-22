@@ -5,10 +5,10 @@ import './App.css';
 class App extends React.Component {
   render() {
     const tariffs = [
-      { name: "Безлимитный 300", price: 300, type: "basic" },
-      { name: "Безлимитный 450", price: 450, type: "standard" },
-      { name: "Безлимитный 550", price: 550, type: "premium" },
-      { name: "Безлимитный 1000", price: 1000, type: "pro" }
+      { name: "Безлимитный 300", price: 300, type: "basic", speed: "до 10 Мбит/сек"},
+      { name: "Безлимитный 450", price: 450, type: "standard", speed: "до 50 Мбит/сек" },
+      { name: "Безлимитный 550", price: 550, type: "premium", speed: "до 100 Мбит/сек" },
+      { name: "Безлимитный 1000", price: 1000, type: "pro", speed: "до 200 Мбит/сек" }
     ];
 
     return (
@@ -20,6 +20,7 @@ class App extends React.Component {
             price={tariff.price}
             highlighted={tariff.price === 550}
             type={tariff.type}
+            speed={tariff.speed}
           />
         ))}
       </div>
