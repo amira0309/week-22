@@ -1,4 +1,3 @@
-// Tariff.js
 import React from 'react';
 import './Tariff.css';
 
