@@ -6,22 +6,22 @@
   }
   
   .tariff.highlighted {
-    background-color: yellow;
+    box-shadow: yellow;
   }
   
   .basic {
-    border-color: blue;
+    border-color: rgb(34, 143, 245);
   }
   
   .standard {
-    border-color: green;
+    border-color: rgb(62, 255, 165);
   }
   
   .premium {
-    border-color: orange;
+    border-color: rgb(221, 94, 35);
   }
   
   .pro {
-    border-color: red;
+    border-color: black;
   }
   
