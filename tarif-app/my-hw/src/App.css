@@ -1,0 +1,9 @@
+.tariff {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.highlighted {
+  background-color: yellow;
+}
