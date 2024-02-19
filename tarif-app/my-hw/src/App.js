@@ -1,4 +1,3 @@
-// App.js
 import React from 'react';
 import Tariff from './Tariff';
 import './App.css';
@@ -15,7 +14,7 @@ class App extends React.Component {
     return (
       <div className="App">
         {tariffs.map((tariff, index) => (
-          <Tariff
+          <Tariff.modules
             key={index}
             name={tariff.name}
             price={tariff.price}

@@ -5,7 +5,7 @@ class Tariff extends React.Component {
   render() {
     const { name, price, highlighted, type } = this.props;
     return (
-      <div className={`tariff ${highlighted ? 'highlighted' : ''} ${type}`}>
+      <div className={`Tariff ${highlighted ? 'highlighted' : ''} ${type}`}>
         <h3>{name}</h3>
         <p>Price: {price}р</p>
       </div>
@@ -14,4 +14,4 @@ class Tariff extends React.Component {
 }
 
 export default Tariff;
-
+ss
