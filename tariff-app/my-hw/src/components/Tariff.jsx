@@ -7,7 +7,7 @@ class Tariff extends React.Component {
     return (
       <div className={`tariff ${highlighted ? 'highlighted' : ''} ${type}`}>
         <h3>{name}</h3>
-        <p>Price: {price}р</p>
+        <p>руб {price}/мес</p>
       </div>
     );
   }

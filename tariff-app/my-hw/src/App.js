@@ -1,5 +1,5 @@
 import React from 'react';
-import Tariff from './Tariff';
+import Tariff from './components/Tariff';
 import './App.css';
 
 class App extends React.Component {
