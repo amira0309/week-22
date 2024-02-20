@@ -1,12 +1,14 @@
 .tariff {
     display: inline-block;
-    padding: 10px;
-    margin: 10px;
+    padding: 1px;
+    margin: 1px;
     border: 1px solid #ccc;
+    margin-left: 0;
   }
   
   .tariff.highlighted {
-    box-shadow: yellow;
+    background-color: yellow;
+    padding-top: 20px;
   }
   
   .basic {
