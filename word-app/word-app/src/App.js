@@ -1,17 +1,23 @@
-import './App.css';
-import React from "react";
-import WordList from './components/WordList';
-import WordCard from './components/WordCard';
+import React from 'react';
+import WordCard from './components/WordCard'; 
+import EditableTable from './components/EditableTable'; 
 
-function App() {
+export default function App() {
+  const data = [
+    { word: 'apple', translation: 'яблоко' },
+    { word: 'banana', translation: 'банан' },
+    { word: 'orange', translation: 'апельсин' }
+  ];
+
   return (
-    <div className="App">
-      <h1>Изучение иностранных слов</h1>
-      <WordList />
-      <WordCard />
+    <div>
+      <h2>Слова</h2>
+      <WordCard word="apple" translation="яблоко" />
+      <WordCard word="banana" translation="банан" />
+      <WordCard word="orange" translation="апельсин" />
       
+      <h2>Таблица</h2>
+      <EditableTable data={data} />
     </div>
   );
 }
-
-export default App;
