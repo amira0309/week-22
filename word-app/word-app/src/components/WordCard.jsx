@@ -1,16 +1,20 @@
-import React from "react";
-import "./styles/WordCard.css";
+import React, { useState } from 'react';
 
-function WordCard({ term, transcription, translation, theme }) {
+const WordCard = ({ word, translation }) => {
+  const [showTranslation, setShowTranslation] = useState(false);
+
+  const handleShowTranslation = () => {
+    setShowTranslation(true);
+  };
+
   return (
-    <div className="WordCard">
-      <h3>{term}</h3>
-      <p><strong>Транскрипция:</strong> {transcription}</p>
-      <p><strong>Перевод:</strong> {translation}</p>
-      <p><strong>Тема:</strong> {theme}</p>
-      {/* кнопки для удаления и редактирования */}
+    <div>
+      <div>Слово: {word}</div>
+      {showTranslation && <div>Перевод: {translation}</div>}
+      {!showTranslation && <button onClick={handleShowTranslation}>Показать перевод</button>}
     </div>
   );
-}
+};
 
 export default WordCard;
+
