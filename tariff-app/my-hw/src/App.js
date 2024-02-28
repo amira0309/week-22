@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Tariff from './components/Tariff';
+import Tariff from './components/Tariff/Tariff';
 import './App.css';
 
 const App = () => {
