@@ -1,6 +1,6 @@
 import React from 'react';
-import WordCard from './components/WordCard'; 
-import EditableTable from './components/EditableTable'; 
+import WordCard from './components/WordCard/WordCard'; 
+import EditableTable from './components/EditableTable/EditableTable'; 
 
 export default function App() {
   const data = [
