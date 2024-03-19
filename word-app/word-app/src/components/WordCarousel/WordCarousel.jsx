@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import WordCard from './WordCard';
+import WordCard from './components/WordCard/WordCard';
 import './WordCarousel.css'; 
 
 const WordCarousel = ({ words }) => {
