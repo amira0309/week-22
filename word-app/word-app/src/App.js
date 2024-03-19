@@ -1,5 +1,5 @@
 import React from 'react';
-import WordCarousel from './WordCarousel';
+import WordCarousel from './components/WordCarousel/WordCarousel';
 import EditableTable from './components/EditableTable/EditableTable';
 
 export default function App() {
