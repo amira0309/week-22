@@ -1,8 +1,12 @@
+// App.js
 import React from 'react';
-import WordCarousel from './components/WordCarousel/WordCarousel';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Menu from './components/Menu';
 import EditableTable from './components/EditableTable/EditableTable';
+import CardGame from './components/CardGame/CardGame';
+import './styles.css'; 
 
-export default function App() {
+const App = () => {
   const data = [
     { word: 'apple', translation: 'яблоко' },
     { word: 'banana', translation: 'банан' },
@@ -10,12 +14,25 @@ export default function App() {
   ];
 
   return (
-    <div>
-      <h2>Слова</h2>
-      <WordCarousel words={data} />
-      
-      <h2>Таблица</h2>
-      <EditableTable data={data} />
-    </div>
+    <Router>
+      <div>
+        <Menu /> 
+        <div className="content-container">
+          <Routes>
+            <Route path="/" exact>
+              <div>
+                <h2>Слова</h2>
+                <EditableTable data={data} />
+              </div>
+            </Route>
+            <Route path="/game">
+              <CardGame />
+            </Route>
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
+
+export default App;
