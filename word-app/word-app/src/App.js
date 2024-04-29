@@ -1,9 +1,9 @@
-// App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import EditableTable from './components/EditableTable/EditableTable';
 import CardGame from './components/CardGame/CardGame';
+import NavBar from './components/NavBar';
 import './styles.css'; 
 
 const App = () => {
@@ -15,22 +15,19 @@ const App = () => {
 
   return (
     <Router>
-      <div>
-        <Menu /> 
         <div className="content-container">
+          <Menu />
+          <NavBar />
           <Routes>
-            <Route path="/" exact>
-              <div>
+            <Route path="/" element={<div>
                 <h2>Слова</h2>
                 <EditableTable data={data} />
-              </div>
-            </Route>
-            <Route path="/game">
-              <CardGame />
-            </Route>
-          </Routes>
+              </div>}
+            />
+            <Route path="/game" element={<CardGame />} />
+            
+            </Routes>
         </div>
-      </div>
     </Router>
   );
 };
