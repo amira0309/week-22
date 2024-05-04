@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CardGame = () => {
+const CardGame = ({ learnedCount, setLearnedCount }) => {
   const words = [
     { english: 'apple', translation: 'яблоко' },
     { english: 'cat', translation: 'кот' },
@@ -15,11 +15,15 @@ const CardGame = () => {
   const handleNextCard = () => {
     const nextCard = (currentCard + 1) % words.length;
     setCurrentCard(nextCard);
-    setIsFlipped(false); 
+    setIsFlipped(false);
   };
 
   const handleFlipCard = () => {
     setIsFlipped(!isFlipped);
+    // При перевороте карточки (показ перевода), увеличиваем количество изученных слов
+    if (!isFlipped) {
+      setLearnedCount(learnedCount + 1);
+    }
   };
 
   return (
@@ -37,6 +41,7 @@ const CardGame = () => {
           </div>
         </div>
       </div>
+      <p>Изучено слов: {learnedCount}</p>
     </div>
   );
 };
