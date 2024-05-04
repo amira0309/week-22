@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import EditableTable from './components/EditableTable/EditableTable';
@@ -7,6 +7,9 @@ import WordComponents from './components/WordComponents/WordComponents';
 import './styles.css';
 
 const App = () => {
+  // Состояние для отслеживания количества изученных слов
+  const [learnedCount, setLearnedCount] = useState(0);
+
   const data = [
     { word: 'apple', translation: 'яблоко' },
     { word: 'banana', translation: 'банан' },
@@ -28,7 +31,10 @@ const App = () => {
           </div>} />
 
           {/* Маршрут для страницы с карточками (компонент CardGame) */}
-          <Route path="/game" element={<CardGame />} />
+          <Route path="/game" element={<CardGame
+            learnedCount={learnedCount}
+            setLearnedCount={setLearnedCount}
+          />} />
         </Routes>
 
         {/* Дополнительные компоненты, не связанные с маршрутизацией */}
