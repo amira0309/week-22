@@ -1,47 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 import Menu from './components/Menu';
 import EditableTable from './components/EditableTable/EditableTable';
 import CardGame from './components/CardGame/CardGame';
 import WordComponents from './components/WordComponents/WordComponents';
+import ErrorComponent from './components/ErrorComponent/ErrorComponent';
+import wordStore from './store/WordStore';
 import './styles.css';
 
-const App = () => {
-  // Состояние для отслеживания количества изученных слов
-  const [learnedCount, setLearnedCount] = useState(0);
+const App = observer(() => {
+  React.useEffect(() => {
+    wordStore.fetchWords();
+  }, []);
 
-  const data = [
-    { word: 'apple', translation: 'яблоко' },
-    { word: 'banana', translation: 'банан' },
-    { word: 'orange', translation: 'апельсин' }
-  ];
+  if (wordStore.loading) return <div>Loading...</div>;
+  if (wordStore.error) return <ErrorComponent message={wordStore.error} />;
 
   return (
     <Router>
       <div className="content-container">
-        {/* Отображение меню на всех страницах */}
         <Menu />
-
-        {/* Определение маршрутов */}
         <Routes>
-          {/* Маршрут для главной страницы (компонент EditableTable) */}
           <Route path="/" element={<div>
             <h2>Слова</h2>
-            <EditableTable data={data} />
+            <EditableTable data={wordStore.words} onAdd={wordStore.addWord} onUpdate={wordStore.updateWord} onDelete={wordStore.deleteWord} />
           </div>} />
-
-          {/* Маршрут для страницы с карточками (компонент CardGame) */}
-          <Route path="/game" element={<CardGame
-            learnedCount={learnedCount}
-            setLearnedCount={setLearnedCount}
-          />} />
+          <Route path="/game" element={<CardGame />} />
         </Routes>
-
-        {/* Дополнительные компоненты, не связанные с маршрутизацией */}
         <WordComponents />
       </div>
     </Router>
   );
-};
+});
 
 export default App;
