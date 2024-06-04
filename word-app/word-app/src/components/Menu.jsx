@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Menu.css';
-import Logo from '../images/logo1.jpg'; // Импортируйте изображение логотипа
+import Logo from '../images/logo1.jpg'; 
 
 const Menu = () => {
   return (
     <div className="menu">
       <div className="logo">
-        {/* Используйте Link для логотипа */}
         <Link to="/" className="logo-link">
-          Логотип
+          <img src={Logo} alt="Логотип" className="logo-image" />
         </Link>
       </div>
       <div className="menu-links">

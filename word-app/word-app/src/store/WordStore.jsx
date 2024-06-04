@@ -1,8 +1,9 @@
+
 import { makeAutoObservable } from 'mobx';
 
 class WordStore {
   words = [];
-  loading = true;
+  loading = false;
   error = null;
 
   constructor() {
@@ -12,58 +13,61 @@ class WordStore {
   async fetchWords() {
     this.loading = true;
     try {
-      const response = await fetch('/api/words'); // Предполагается, что ваш API возвращает список слов
+      const response = await fetch('/api/words');
       const data = await response.json();
       this.words = data;
-      this.loading = false;
-    } catch (err) {
-      this.error = err.message;
+    } catch (error) {
+      this.error = error.message;
+    } finally {
       this.loading = false;
     }
   }
 
-  async addWord(word) {
+  async addWord(newWord) {
     try {
       const response = await fetch('/api/words', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(word),
+        body: JSON.stringify(newWord),
       });
-      const newWord = await response.json();
-      this.words.push(newWord);
-    } catch (err) {
-      this.error = err.message;
+      const data = await response.json();
+      this.words.push(data);
+    } catch (error) {
+      console.error('Error adding word:', error);
     }
   }
 
   async updateWord(updatedWord) {
     try {
-      await fetch(`/api/words/${updatedWord.id}`, {
+      const response = await fetch(`/api/words/${updatedWord.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(updatedWord),
       });
-      this.words = this.words.map((word) => (word.id === updatedWord.id ? updatedWord : word));
-    } catch (err) {
-      this.error = err.message;
+      const data = await response.json();
+      const index = this.words.findIndex(word => word.id === updatedWord.id);
+      this.words[index] = data;
+    } catch (error) {
+      console.error('Error updating word:', error);
     }
   }
 
-  async deleteWord(wordId) {
+  async deleteWord(id) {
     try {
-      await fetch(`/api/words/${wordId}`, {
+      await fetch(`/api/words/${id}`, {
         method: 'DELETE',
       });
-      this.words = this.words.filter((word) => word.id !== wordId);
-    } catch (err) {
-      this.error = err.message;
+      this.words = this.words.filter(word => word.id !== id);
+    } catch (error) {
+      console.error('Error deleting word:', error);
     }
   }
 }
 
-const wordStore = new WordStore();
-export default wordStore;
+const wordStore = new WordStore(); // Назначаем экземпляр класса переменной
+
+export default wordStore; // Экспортируем переменную, а не анонимный экземпляр класса
