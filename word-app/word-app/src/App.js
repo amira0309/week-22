@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import Menu from './components/Menu';
@@ -9,7 +9,9 @@ import ErrorComponent from './components/ErrorComponent/ErrorComponent';
 import wordStore from './store/WordStore';
 import './styles.css';
 
-const App = observer(() => {
+const AppContent = observer(() => {
+  const [learnedCount, setLearnedCount] = useState(0);
+
   React.useEffect(() => {
     wordStore.fetchWords();
   }, []);
@@ -22,16 +24,27 @@ const App = observer(() => {
       <div className="content-container">
         <Menu />
         <Routes>
-          <Route path="/" element={<div>
-            <h2>Слова</h2>
-            <EditableTable data={wordStore.words} onAdd={wordStore.addWord} onUpdate={wordStore.updateWord} onDelete={wordStore.deleteWord} />
-          </div>} />
-          <Route path="/game" element={<CardGame />} />
+          <Route path="/" element={
+            <div>
+              <h2>Слова</h2>
+              <EditableTable 
+                data={wordStore.words} 
+                onAdd={wordStore.addWord.bind(wordStore)} 
+                onUpdate={wordStore.updateWord.bind(wordStore)} 
+                onDelete={wordStore.deleteWord.bind(wordStore)} 
+              />
+            </div>
+          } />
+          <Route path="/game" element={<CardGame words={wordStore.words} learnedCount={learnedCount} setLearnedCount={setLearnedCount} />} />
         </Routes>
         <WordComponents />
       </div>
     </Router>
   );
 });
+
+const App = () => (
+  <AppContent />
+);
 
 export default App;
