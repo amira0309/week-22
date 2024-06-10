@@ -1,15 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../CardGame.css'; // Импортируем файл стилей для компонента CardGame
+import '../CardGame.css'; // Импорт файла стилей для компонента CardGame
 
-const CardGame = ({ learnedCount, setLearnedCount }) => {
-  const words = [
-    { english: 'apple', translation: 'яблоко' },
-    { english: 'cat', translation: 'кот' },
-    { english: 'house', translation: 'дом' },
-    { english: 'sun', translation: 'солнце' },
-    { english: 'tree', translation: 'дерево' }
-  ];
-
+const CardGame = ({ learnedCount, setLearnedCount, words }) => {
   const [currentCard, setCurrentCard] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const viewTranslationButtonRef = useRef(null); // Создаем ref для кнопки "Посмотреть перевод"
@@ -40,11 +32,11 @@ const CardGame = ({ learnedCount, setLearnedCount }) => {
           <div className="card-front">
             <h3>{words[currentCard].english}</h3>
             <button ref={viewTranslationButtonRef} onClick={handleFlipCard}>
-              Показать перевод
+              {isFlipped ? 'Скрыть перевод' : 'Показать перевод'}
             </button>
           </div>
           <div className="card-back">
-            <h3>{words[currentCard].translation}</h3>
+            <h3>{words[currentCard].russian}</h3>
           </div>
         </div>
         <div className="button-container">
